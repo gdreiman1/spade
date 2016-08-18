@@ -17,7 +17,7 @@ SPADE.cluster <- function(tbl, k) {
 	is.na(clust$assgn) <- which(clust$assgn == 0)
 	for (i in c(1:max(clust$assgn, na.rm=TRUE))) {  
 		obs <- which(clust$assgn == i)
-		if (length(obs) > 1) {
+		if (length(obs) >= 1) {
 			centers <- rbind(centers,colMeans(tbl[obs,,drop=FALSE]))
 			clust$assgn[obs] <- nrow(centers)
 		} else {
